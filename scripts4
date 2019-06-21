@@ -31,8 +31,12 @@ function exists(){
 	return 0
 }
 
-_retval_= exists accessibility.md
-echo "retval ${_retval_}"
+# Test exists function
+_sample_file_name_="accessibility.md"
+if [ $( exists accessibility.md ) == 1 ]
+then
+	echo "File exists"
+fi
 
 # Read files from path
 _path_="/Users/jake.kwon/BB/bb6.0/feature-content/statics/collection-c1-content/prebuilt"
@@ -51,10 +55,15 @@ do
 			echo ".MD files in ${_dir_##*/}"
 			for _md_file_ in ${_dir_}/assets/docs/*
 			do
-				if test ${_md_file_: -3} == ".md"
+				#if test ${_md_file_: -3} == ".md"
+				#then
+				#	echo "    ${_md_file_##*/}" # from the front|head, del all chars until the last ocurrence of /
+				#fi	
+				#_retval_ = exists ${_md_file_##*/}
+				if test $(exists ${_md_file_##*/}) == 0
 				then
-					echo "    ${_md_file_##*/}" # from the front|head, del all chars until the last ocurrence of /
-				fi	
+					echo "    FILE: ${_md_file_##*/} name must be changed"
+				fi
 			done
 			echo ""
 		#else

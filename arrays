@@ -17,10 +17,23 @@ function exists(){
 	echo 0
 }
 
-exists 1
-exists 2
-exists 5
-exists 100
+# exists 1
+# exists 2
+# exists 5
+# exists 100
+
+_value_=2
+echo $( exists 1)
+echo $( exists ${_value_})
+echo $( exists 100 )
+if test $( exists 1 ) == 1
+then
+	echo "same"
+fi
+if [ $(exists ${_value_}) == 1 ]
+then
+	echo "same"
+fi
 
 _array_=(1 2 3 4 5)
 
