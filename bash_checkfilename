@@ -64,6 +64,8 @@ do
 				if test ${_md_file_: -3} == ".md" && test $(exists ${_md_file_##*/}) == 0
 				then
 					echo "    FILE: ${_md_file_##*/} name must be changed"
+					#if test -f "${_md_file_}/technical.md"
+
 				fi
 			done
 			echo ""

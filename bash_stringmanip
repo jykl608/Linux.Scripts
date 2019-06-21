@@ -1,0 +1,16 @@
+_path_="/Users/jake.kwon/BB/bb6.0/feature-content/statics/collection-c1-content/prebuilt/folder-name/file.md"
+
+
+# full path
+echo ${_path_}
+
+# delete all chars from beg until last ocurrence of '/' (output: file.md)
+echo ${_path_##*/}
+
+# delete all chars from beg until first ocurr of '/'
+echo ${_path_#*/}
+
+echo ${_path_/*%}
+
+
+
