@@ -1,0 +1,35 @@
+
+# want to remote first line from .md files
+# in /files
+
+for _file_ in ./files/*
+do
+	#check if it is a file
+	if test -f ${_file_}
+	then
+		if test "${_file_: -3}" == ".md"
+		then
+			sed '1,2d' ${_file_} > "${_file_}.bak" #delete first 2 lines from _file_ and output content to _file_.bak
+			cat "${_file_}.bak"
+			echo "----------------------------"
+			rm ${_file_} && mv "${_file_}.bak" ${_file_}
+		fi
+	fi
+done
+
+
+# list files
+
+#for _file_ in ./files/*
+#do
+#	if test -f ${_file_}	# -f checks if ${_file_} is of type "file"
+#	then
+#		if test "${_file_: -3}" == ".md"
+#		then
+#			echo ${_file_}
+#		fi
+#	fi
+#done
+
+
+
