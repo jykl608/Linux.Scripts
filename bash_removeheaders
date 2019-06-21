@@ -1,0 +1,39 @@
+
+# list .md files from all /assets/docs
+
+_path_="/Users/jake.kwon/BB/bb6.0/feature-content/statics/collection-c1-content/prebuilt"
+
+# display path
+# echo ${_path_}
+
+# list 'widget' subfolders
+
+for _file_ in ${_path_}/*
+do
+	if test -d ${_file_}
+	then
+		# check if '/assets/docs' exists
+		# list all .md files
+		if test -d "${_file_}/assets/docs"
+		then
+			#echo "/docs exists in ...${_file_: -30}"
+			for _md_file_ in ${_file_}/assets/docs/*
+			do
+				# echo ${_md_file_}
+				if test -f ${_md_file_} && test ${_md_file_: -3} == ".md"
+				then
+					#echo "FROM FILE ${_md_file_}"
+					#sed -n '1,3p' ${_md_file_}
+					sed '1,2d' ${_md_file_} > "${_md_file_}.bak" && rm ${_md_file_} && mv "${_md_file_}.bak" ${_md_file_}
+				fi
+			done
+			echo "---------------------------------"
+		#else
+			#echo "/docs NOT FOUND in ...${_file_: -30}"
+		fi
+	fi
+done
+
+
+
+
