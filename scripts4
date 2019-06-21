@@ -16,25 +16,26 @@
 #filenames=(1 2 3 4 5)
 
 # These are list of valid .md file names allowed
-filenames=("accessibility.md" "behaviour.md" "common-usages.md" "good-to-know.md" "ice-content-areas.md" "notes.md" "preferences.md" "usage.md" "technical.md")
 
-function inFileNames # ()
-{
-	return 0;
-}
-
-function displayFileNames # ()
-{
-	for _file_ in ${filenames}
+function exists(){
+	local filenames=("accessibility.md" "behaviour.md" "common-usages.md" "good-to-know.md" "ice-content-areas.md" "notes.md" "preferences.md" "usage.md" "technical.md")
+	local _arg_=${1}
+	for _file_ in ${filenames[@]}
 	do
-		echo ${_file_}
+		if test ${_file_} == ${_arg_}
+		then
+			# echo 1	
+			return 1
+		fi
 	done
+	return 0
 }
+
+_retval_= exists accessibility.md
+echo "retval ${_retval_}"
 
 # Read files from path
 _path_="/Users/jake.kwon/BB/bb6.0/feature-content/statics/collection-c1-content/prebuilt"
-
-displayFileNames
 
 # List all .md files from _path_
 for _dir_ in ${_path_}/*
@@ -50,8 +51,12 @@ do
 			echo ".MD files in ${_dir_##*/}"
 			for _md_file_ in ${_dir_}/assets/docs/*
 			do
-				echo " - ${_md_file_##*/}" # from the front|head, del all chars until the last ocurrence of /	
+				if test ${_md_file_: -3} == ".md"
+				then
+					echo "    ${_md_file_##*/}" # from the front|head, del all chars until the last ocurrence of /
+				fi	
 			done
+			echo ""
 		#else
 			#echo "/docs does NOT exist in ${_dir_##*/}"
 		fi
