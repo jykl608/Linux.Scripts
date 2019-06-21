@@ -1,0 +1,57 @@
+# echo "Bash version ${BASH_VERSION}"
+# for (( i = 1; i < 10; i++ ))
+# do
+# 	echo ${i}
+# done
+
+# echo "Current Path $(pwd)"
+_path_="./bb6.0/feature-content/statics/collection-c1-content/prebuilt"
+
+for dir in ${_path_}/*
+do
+	cd ${dir}/assets/docs && mv usages.md usage.md
+	cd && cd BB
+done
+
+#for dir in ${_path_}/*
+#do
+#	if [ -d ${dir}  ]
+#	then
+#		cd ${dir}/assets/docs && mv behaviours.md behaviour.md
+#		cd && cd BB	
+#	fi
+#done
+
+#for dir in ${_path_}/*
+#do
+#	if [ -d ${dir}  ]
+#	then
+#		cd ${dir}/assets/docs && mv behavior.md behaviour.md
+#		cd && cd BB
+#	fi
+#done
+
+#for dir in ${_path_}/*
+#do
+#	if [ -d ${dir} ]
+#	then
+#		cd ${dir}/assets/docs && mv common-usage.md common-usages.md 
+#		cd && cd BB
+#	fi
+#done
+
+#for file in $_path_
+#do
+#	cd $file && ls -l && cd && cd BB
+#	echo "DONE"
+#done
+
+#for file in ./*
+#do
+#	if [ ${file} == "./file1.txt" ]
+#	then
+#		continue;
+#	fi
+#	echo ${file}
+#done
+

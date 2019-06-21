@@ -1,0 +1,56 @@
+#_path_="/BB/bb6.0/feature-content/statics/collection-c1-content/prebuilt"
+#_path_="bb6.0/feature-content/statics/collection-c1-content/prebuilt"
+_path_="bb6.0/feature-content/statics/collection-c1-content/prebuilt"
+
+# cd ${_path_} && ls -l && cd && cd BB 
+
+cd ${_path_}
+
+for _dir_ in ./*
+do
+	#echo "DIR NAME: "${_dir_}
+	if [ -d ${_dir_}/assets/docs ]
+	then
+		echo "/docs found at ${_dir_}"
+		for _file_ in ${_dir_}/assets/docs/*
+		do
+			echo "    ${_file_}" 
+		done
+		echo "    ------------------------------------"
+	fi
+	#else
+	#	#echo "/docs NOT found at ${_dir_}"
+done
+
+cd && cd BB
+
+
+#for file in ./*
+#do
+#	echo ${file}
+#done
+
+# search for common-usage.md instances
+
+#_path_="/bb6.0/feature-content/statics/collection-c1-content/prebuilt/layout-c1-frame"
+#_path2_="${_path_}"
+#_path_="/Users/jake.kwon/BB/bb6.0/feature-content/statics/collection-c1-content/prebuilt/layout-c1-frame/assets/docs"
+
+#echo "BEG"
+#echo ${_path_}
+#echo ${_path2_}
+#echo "END"
+
+# string|value comparison
+
+#if test ${_path_} == ${_path2_}
+#then
+#	echo "same"
+#fi
+
+
+
+
+
+
+
