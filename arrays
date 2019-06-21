@@ -1,0 +1,46 @@
+
+function displayValues(){
+	echo "Passed arg ${1}" 
+}
+
+function exists(){
+	local _values_=(1 2 3 4 5) 
+	_arg_=${1}
+	for _value_ in ${_values_[@]}
+	do
+		if test ${_arg_} == ${_value_}
+		then
+			echo 1
+			return
+		fi
+	done
+	echo 0
+}
+
+exists 1
+exists 2
+exists 5
+exists 100
+
+_array_=(1 2 3 4 5)
+
+#_arg_="Orange"
+#displayValues Apple
+#displayValues ${_arg_}
+
+_string_array_=("apple" "mango" "bananas")
+
+_indexed_array_[0]=100
+_indexed_array_[1]=200
+_indexed_array_[2]=300
+_indexed_array_[3]=400
+_indexed_array_[4]=500
+
+# display elements in array
+#for _ele_ in ${_array_[@]}
+#do
+#	echo ${_ele_}
+#done
+
+
+

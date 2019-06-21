@@ -1,0 +1,65 @@
+
+# Only these files should be allowed
+# accessibility.md
+# behaviour.md
+# common-usages.md
+# good-to-know.md
+# ice-content-areas.md
+# notes.md
+# preferences.md
+# usage.md
+# technical.md - only for devs
+
+#filenames[0]="accessibility.md"
+#filenames[1]="behaviour.md"
+#filenames[2]="common-usages.md"
+#filenames=(1 2 3 4 5)
+
+# These are list of valid .md file names allowed
+filenames=("accessibility.md" "behaviour.md" "common-usages.md" "good-to-know.md" "ice-content-areas.md" "notes.md" "preferences.md" "usage.md" "technical.md")
+
+function inFileNames # ()
+{
+	return 0;
+}
+
+function displayFileNames # ()
+{
+	for _file_ in ${filenames}
+	do
+		echo ${_file_}
+	done
+}
+
+# Read files from path
+_path_="/Users/jake.kwon/BB/bb6.0/feature-content/statics/collection-c1-content/prebuilt"
+
+displayFileNames
+
+# List all .md files from _path_
+for _dir_ in ${_path_}/*
+do
+	if test -d ${_dir_}
+	then
+		# echo "${_dir_} ${#_dir_}" # display length of _dir_
+		# delete longest match from begining until specified char is reached
+		# display only folder name from path
+		# echo ${_dir_##*/}
+		if test -d ${_dir_}/assets/docs
+		then
+			echo ".MD files in ${_dir_##*/}"
+			for _md_file_ in ${_dir_}/assets/docs/*
+			do
+				echo " - ${_md_file_##*/}" # from the front|head, del all chars until the last ocurrence of /	
+			done
+		#else
+			#echo "/docs does NOT exist in ${_dir_##*/}"
+		fi
+	fi
+done
+
+#for _value_ in ${filenames[@]}
+#do
+#	echo ${_value_}
+#done
+
