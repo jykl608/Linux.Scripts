@@ -1,0 +1,27 @@
+_string_="/this-is-my-folder/"
+_string2_="this-is-the-path-to-the-folder"
+
+# cut first 6 chars
+#echo ${_string_:6}
+
+
+# get a portion between range of chars
+#echo ${_string_:6:2}
+#echo ${_string_:12:6}
+
+# will output 'folder'; will cut chars until the last -
+echo ${_string2_##*-}
+
+# will output 'is-the-path-to-the-folder'; will cut characters until first -
+echo ${_string2_#*-}
+
+# will cut all chars until first - from the BACK
+echo ${_string2_%-*}
+
+echo ${_string2_%%-*}
+
+
+
+
+
+

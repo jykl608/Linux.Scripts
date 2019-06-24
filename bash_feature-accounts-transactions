@@ -1,0 +1,30 @@
+_path_="/Users/jake.kwon/BB/bb6.0/feature-accounts-transactions/statics/collection-c1-accounts-transactions/src"
+
+# remove /docs folders in widget
+rm -fr "${_path_}/widget-c1-accounts-overview-ng/assets/docs"
+rm -fr "${_path_}/widget-c1-product-summary-ng/assets/docs"
+rm -fr "${_path_}/widget-c1-transactions-ng/assets/docs"
+rm -fr "${_path_}/widget-c1-turnovers-ng/assets/docs"
+
+for _dir_ in ${_path_}/*
+do
+	if test -d ${_dir_}
+	then
+		_dir_name_=${_dir_##*/}
+		if ! [ -d ${_dir_}/assets/docs ] && [ ${_dir_name_%%-*} == "widget" ]
+		then
+			mkdir ${_dir_}/assets/docs 
+		fi
+	fi
+done
+
+# verify /assets/docs have been created
+
+for _dir_ in ${_path_}/*
+do
+	if test -d ${_dir_} && test -d ${_dir_}/assets/docs
+	then
+		echo "/assets/docs created in ${_dir_##*/}"
+	fi 
+done
+
