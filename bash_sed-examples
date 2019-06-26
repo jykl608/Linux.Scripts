@@ -1,0 +1,25 @@
+# use ./file.txt
+
+_file_="sample_files/file.txt"
+_n_=0
+
+while read _line_
+do
+	# echo "line ${_n_}: ${_line_} -> ${#_line_}"
+	if test ${#_line_} != 0
+	then
+		break
+	fi
+	_n_=$((_n_+1))
+done < ${_file_}
+
+echo "text found at ${_n_}"
+
+if test ${_n_} == 0
+then
+	echo "No empty spaces found at beg of file"
+else
+	# remove empty lines at beg of file
+	cat ${_file_} > ${_file_}.bak
+	sed "1,${_n_}d" ${_file_}.bak > ${_file_}
+fi
