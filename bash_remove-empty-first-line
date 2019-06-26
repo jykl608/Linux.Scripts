@@ -1,0 +1,31 @@
+# list all .md files
+
+#_path_="sample_files"
+
+#if test -d ${_path_}
+#then
+#	echo "${_path_} exists"
+#fi
+
+for _file_ in ${_path_}/*
+do
+	if test -f ${_file_} && test ${_file_: -3} == ".md"
+	then
+		# create backups
+		cp ${_file_} ${_file_}.bak
+	fi
+done
+
+# create /bak folder
+# if backup found, mv to bak folder
+_path_bak_=${_path_}/bak
+if ! [ -d ${_path_bak_} ]
+then
+	mkdir ${_path_bak_}
+fi 
+
+mv ${_path_}/*.bak ${_path_bak_}
+
+
+
+
